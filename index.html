@@ -106,29 +106,132 @@
   <h3 class="font-semibold text-lg mt-6 mb-2">Executive Summary</h3>
   <p>Zepto, India's fastest-growing 10-minute delivery app, excels in speed and simplicity but faces critical UX challenges around visibility, user control, and error prevention. Analysis examines interface through Nielsen's 10 Usability Heuristics and fundamental UX laws across imagery, copy, interactivity, performance, page layout, and information hierarchy. <strong>Score: 7/10 heuristics followed well, 3/10 critical violations, 12+ UX laws applied.</strong></p>
 
-  <h3 class="font-semibold text-lg mt-6 mb-2">Key Findings</h3>
+  <h3 class="font-semibold text-lg mt-6 mb-2">1. Visibility of System Status</h3>
+  <p><strong>Jakob's Law | Feedback Loops</strong></p>
   <ul class="list-disc list-inside mt-2 space-y-1">
-    <li>Excellent visibility with real-time delivery tracking and ETA updates</li>
-    <li>Consistent design language, layout, and imagery standards</li>
-    <li>Critical gaps in order cancellation, address validation, and undo actions</li>
-    <li>Homepage clutter and minor inconsistencies in CTA placements</li>
-    <li>Error handling and help/documentation are minimal or unclear</li>
+    <li>✅ <strong>EXCELLENT - Imagery:</strong> Real-time delivery tracking with animated delivery partner location on map, live ETA updates. Visual indicators (bike icon moving) provide constant feedback on order progress—users know exactly where order is.</li>
+    <li>✅ <strong>GOOD - Imagery:</strong> Product grid uses skeleton screens while loading, maintaining layout structure, preventing content shift. Follows Aesthetic-Usability Effect making wait times feel shorter.</li>
+    <li>✅ <strong>EXCELLENT - Copy:</strong> "Arriving in 8 mins" countdown timer creates urgency and transparency. Progress bar shows stages: "Order Confirmed" → "Being Packed" → "Out for Delivery" → "Delivered" with clear copy.</li>
+    <li>❌ <strong>VIOLATION - Interactivity:</strong> When items go out of stock mid-shopping, they're removed from cart with minimal feedback. Users may not notice items disappeared until checkout. <strong>Recommendation:</strong> Add persistent banner: "2 items removed due to stock unavailability" with 10-second undo option.</li>
   </ul>
 
-  <h3 class="font-semibold text-lg mt-6 mb-2">Recommendations</h3>
+  <h3 class="font-semibold text-lg mt-6 mb-2">2. Match Between System & Real World</h3>
+  <p><strong>Jakob's Law | Mental Models</strong></p>
   <ul class="list-disc list-inside mt-2 space-y-1">
-    <li>Enable order cancellation within 5 minutes of packing, with optional penalty fee</li>
-    <li>Add real-time address validation, pin code checks, and duplicate order detection</li>
-    <li>Introduce undo functionality for destructive actions (clear cart, remove items)</li>
-    <li>Streamline homepage sections to reduce cognitive load and personalize content</li>
-    <li>Improve payment failure messaging and add contextual help/FAQ integration</li>
-    <li>Standardize CTA button placement across pages</li>
-    <li>Add keyboard shortcuts for web and swipe gestures for mobile for efficiency</li>
+    <li>✅ <strong>EXCELLENT - Layout:</strong> Layout mirrors Blinkit, Swiggy Instamart, Amazon Fresh. Category tiles at top, search bar, product grid, floating cart button. Users face zero learning curve due to Jakob's Law—users spend most time on OTHER apps, so Zepto benefits from familiar patterns.</li>
+    <li>✅ <strong>GOOD - Layout:</strong> Categories mirror physical grocery store sections: "Fruits & Vegetables", "Dairy", "Snacks", "Beverages". Users naturally know where to look based on offline shopping mental models.</li>
+    <li>⚠ <strong>MIXED - Copy:</strong> "Paan Corner" terminology culturally relevant in India, but categories like "Paan Corner" or "Munchies" may confuse first-time users or non-native speakers. However, icons help bridge the gap.</li>
   </ul>
 
-  <h3 class="font-semibold text-lg mt-6 mb-2">Conclusion</h3>
-  <p>Zepto’s foundation is strong, with excellent speed, system visibility, and minimalist design. Addressing critical UX gaps in user control, error prevention, and help/documentation will solidify user trust, enhance usability, and reduce support burden.</p>
+  <h3 class="font-semibold text-lg mt-6 mb-2">3. User Control & Freedom</h3>
+  <p><strong>Fitts's Law | Hick's Law</strong></p>
+  <ul class="list-disc list-inside mt-2 space-y-1">
+    <li>❌ <strong>CRITICAL - Interactivity:</strong> No order cancellation after "Being Packed" stage (~2 mins). Users stuck even if they realize mistake immediately. Competitors like Blinkit allow cancellation until dispatch. <strong>Severely violates user control principle.</strong></li>
+    <li>✅ <strong>GOOD - Interactivity:</strong> Cart page has prominent +/- buttons (large tap targets per Fitts's Law). Swipe-to-delete gesture for removing items. Clear "Remove" text option as backup.</li>
+    <li>❌ <strong>VIOLATION - Interactivity:</strong> "Clear Cart" button has no undo mechanism. Accidentally tapping loses entire selection. Should implement 5-second undo snackbar.</li>
+    <li>✅ <strong>EXCELLENT - Layout:</strong> Back button always visible top-left. Breadcrumb on category pages. Users never feel trapped.</li>
+  </ul>
+  <p><strong>💡 Recommendations:</strong></p>
+  <ul class="list-disc list-inside mt-2 space-y-1">
+    <li>Allow cancellation within 5 mins even after packing starts (penalty fee acceptable)</li>
+    <li>Add undo toast for all destructive actions (clear cart, remove items)</li>
+  </ul>
+
+  <h3 class="font-semibold text-lg mt-6 mb-2">4. Consistency & Standards</h3>
+  <p><strong>Jakob's Law | Aesthetic-Usability</strong></p>
+  <ul class="list-disc list-inside mt-2 space-y-1">
+    <li>✅ <strong>EXCELLENT - Imagery:</strong> Consistent visual language. Purple (#8B5CF6) brand color used consistently for CTAs, highlights, interactive elements. Product images follow uniform aspect ratio and white background standard. Icons use consistent line weights.</li>
+    <li>✅ <strong>GOOD - Interactivity:</strong> Platform conventions followed. iOS: swipe-back gesture works. Android: hardware back button functions correctly. Bottom sheet for filters follows mobile platform standards.</li>
+    <li>⚠ <strong>INCONSISTENT - Interactivity:</strong> CTA button placement sometimes bottom-right (product page), sometimes bottom-center (quick add). Creates micro-confusion. Should standardize position.</li>
+  </ul>
+
+  <h3 class="font-semibold text-lg mt-6 mb-2">5. Error Prevention</h3>
+  <p><strong>Tesler's Law | Postel's Law</strong></p>
+  <ul class="list-disc list-inside mt-2 space-y-1">
+    <li>❌ <strong>CRITICAL - Interactivity:</strong> No address validation. Users can enter any text in house/flat number field including invalid formats. No validation for pin codes matching serviceability. Results in failed deliveries. <strong>Should implement:</strong> Real-time pin code validation, house number format hints, Google Places autocomplete for building names.</li>
+    <li>✅ <strong>GOOD - Interactivity:</strong> Out-of-stock items grayed out with "Currently Unavailable" badge. Users cannot add to cart, preventing checkout errors. Clear visual distinction prevents wasted effort.</li>
+    <li>❌ <strong>VIOLATION - Interactivity:</strong> No duplicate order warning. If user places identical order within 10 minutes, no confirmation prompt. Should ask: "You just ordered this. Order again?"</li>
+    <li>✅ <strong>GOOD - Copy:</strong> Proactive substitution notice for items with variants: "If unavailable, we'll send [similar brand]" message visible before checkout. Sets expectations, prevents disappointment.</li>
+  </ul>
+  <p><strong>💡 Recommendation:</strong> Implement smart address validation using Google Maps API + pin code database. Add duplicate order detection with confirmation dialog.</p>
+
+  <h3 class="font-semibold text-lg mt-6 mb-2">6. Recognition Rather Than Recall</h3>
+  <p><strong>Miller's Law | Serial Position Effect</strong></p>
+  <ul class="list-disc list-inside mt-2 space-y-1">
+    <li>✅ <strong>EXCELLENT - Layout:</strong> Visual category icons. Every category has distinctive icon + image (banana for fruits, milk bottle for dairy). Users recognize categories instantly without reading text. Follows Picture Superiority Effect—images processed 60,000x faster than text.</li>
+    <li>✅ <strong>GOOD - Interactivity:</strong> Recent searches dropdown. Search bar shows last 5 searches on focus. Users don't need to remember exact product names. Reduces cognitive load per Miller's Law (7±2 chunks limit).</li>
+    <li>✅ <strong>EXCELLENT - Layout:</strong> "Buy Again" section. Homepage prominently displays previously ordered items. One-tap reorder. Leverages Serial Position Effect by placing it high on page (primacy effect).</li>
+    <li>⚠ <strong>IMPROVEMENT NEEDED - Interactivity:</strong> Filter memory. When navigating back from product page, applied filters reset. Users must reselect "Organic Only" or "Under ₹100" each time. Should persist filter state during session.</li>
+  </ul>
+
+  <h3 class="font-semibold text-lg mt-6 mb-2">7. Flexibility & Efficiency of Use</h3>
+  <p><strong>Fitts's Law | Parkinson's Law</strong></p>
+  <ul class="list-disc list-inside mt-2 space-y-1">
+    <li>✅ <strong>EXCELLENT - Interactivity:</strong> Quick Add buttons. Product cards have "Add" button directly on grid. No need to open product page for common items. Saves 2 taps per product. Large tap target (48x48dp) per Fitts's Law.</li>
+    <li>✅ <strong>GOOD - Interactivity:</strong> Voice search. Microphone icon in search bar. Power users can speak "atta 5kg" instead of typing. Accessibility win + efficiency for hands-full scenarios (cooking).</li>
+    <li>❌ <strong>MISSING - Interactivity:</strong> Keyboard shortcuts (web). Web version lacks shortcuts like "/" for search, "C" for cart. Desktop users must use mouse for everything. Competitor Amazon has comprehensive shortcuts.</li>
+    <li>✅ <strong>EXCELLENT - Performance:</strong> Instant load times. Homepage loads in <1 second on 4G. Lazy loading for product images below fold. Search results appear as-you-type with <100ms latency. Feels instantaneous per Doherty Threshold (400ms productivity threshold).</li>
+  </ul>
+  <p><strong>💡 Recommendation:</strong> Add keyboard shortcuts for web power users. Implement swipe gestures for common actions on mobile (swipe product card right to quick-add).</p>
+
+  <h3 class="font-semibold text-lg mt-6 mb-2">8. Aesthetic & Minimalist Design</h3>
+  <p><strong>Hick's Law | Law of Prägnanz</strong></p>
+  <ul class="list-disc list-inside mt-2 space-y-1">
+    <li>✅ <strong>EXCELLENT - Imagery:</strong> Clean product cards. Each card shows only: Image, Name, Price, Weight, Add button. No clutter. White space used generously. Follows Law of Prägnanz—people perceive complex images in simplest form possible.</li>
+    <li>✅ <strong>GOOD - Imagery:</strong> Limited color palette. Purple (brand), Green (success), Red (urgency/discount), Gray (secondary). Only 4 colors reduce visual noise. Discount badges use red sparingly for impact.</li>
+    <li>⚠ <strong>CLUTTER ISSUE - Layout:</strong> Homepage can feel overwhelming with too many sections stacked: "Buy Again", "Top Picks", "Trending", "Categories", "Offers". Users face choice paralysis per Hick's Law. <strong>Recommendation:</strong> Reduce to 3-4 key sections; personalize based on user behavior.</li>
+  </ul>
+
+  <h3 class="font-semibold text-lg mt-6 mb-2">9. Help Users Recognize, Diagnose, and Recover from Errors</h3>
+  <p><strong>Error Handling</strong></p>
+  <ul class="list-disc list-inside mt-2 space-y-1">
+    <li>✅ <strong>GOOD - Copy:</strong> Clear error messages. "We don't deliver to this location yet" with pin code shown. "Item out of stock" with suggestion to "Notify me when available." Error messages in plain language.</li>
+    <li>⚠ <strong>IMPROVEMENT NEEDED - Interactivity:</strong> Payment failure handling. When payment fails, user returned to payment screen but no clear guidance on why failure occurred or what to try next. Should show: "Payment failed: [reason]. Try: [alternative methods]."</li>
+    <li>❌ <strong>VIOLATION - Copy:</strong> Generic "Something went wrong" message when app crashes or server errors occur. No actionable recovery steps. Should provide: contact support button, retry option, or alternative action.</li>
+  </ul>
+
+  <h3 class="font-semibold text-lg mt-6 mb-2">10. Help & Documentation</h3>
+  <p><strong>Accessibility</strong></p>
+  <ul class="list-disc list-inside mt-2 space-y-1">
+    <li>⚠ <strong>MINIMAL - Copy:</strong> Limited help resources. No visible FAQ or help center link in app. Users must contact support for basic questions. <strong>Recommendation:</strong> Add contextual help (?) icons on key screens; build searchable FAQ section.</li>
+    <li>✅ <strong>GOOD - Interactivity:</strong> In-app chat support accessible via floating button. Response times reasonable. But proactive help could reduce support load.</li>
+  </ul>
+
+  <h3 class="font-semibold text-lg mt-6 mb-2">Summary of Critical Issues & Priorities</h3>
+  <ul class="list-disc list-inside mt-2 space-y-1">
+    <li><strong>CRITICAL FIXES (P0):</strong>
+      <ul class="list-disc list-inside mt-1 ml-4 space-y-1">
+        <li>Add order cancellation window (5 mins post-packing with penalty fee)</li>
+        <li>Implement address validation (real-time pin code check, format hints)</li>
+        <li>Add undo for destructive actions (clear cart, remove items)</li>
+      </ul>
+    </li>
+    <li><strong>HIGH PRIORITY (P1):</strong>
+      <ul class="list-disc list-inside mt-1 ml-4 space-y-1">
+        <li>Silent cart update notifications (banner for removed items)</li>
+        <li>Duplicate order confirmation dialog</li>
+        <li>Payment failure error messaging improvement</li>
+        <li>Homepage clutter reduction (personalization)</li>
+      </ul>
+    </li>
+    <li><strong>MEDIUM PRIORITY (P2):</strong>
+      <ul class="list-disc list-inside mt-1 ml-4 space-y-1">
+        <li>Filter state persistence across navigation</li>
+        <li>Keyboard shortcuts for web version</li>
+        <li>Contextual help/FAQ integration</li>
+        <li>Consistent CTA button placement</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 class="font-semibold text-lg mt-6 mb-2">Score Breakdown</h3>
+  <ul class="list-disc list-inside mt-2 space-y-1">
+    <li><strong>Strengths:</strong> System visibility, real-world match, recognition over recall, minimalist design, performance</li>
+    <li><strong>Weaknesses:</strong> User control (cancellation), error prevention (validation), help/documentation</li>
+    <li><strong>Overall Assessment:</strong> Excellent speed and core experience undermined by control/safety gaps that risk user trust and increase support burden.</li>
+  </ul>
 </section>
+
 `
       },
       {
